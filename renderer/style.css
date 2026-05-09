@@ -1,0 +1,256 @@
+:root {
+  --color-work: #E74C3C;
+  --color-short-break: #2ECC71;
+  --color-long-break: #3498DB;
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-card: #0f3460;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --radius: 14px;
+  --font-mono: 'Consolas', 'Cascadia Code', 'Courier New', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-app-region: no-drag;
+}
+
+/* Title bar */
+.title-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  -webkit-app-region: drag;
+}
+
+.title-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.title-actions {
+  display: flex;
+  gap: 6px;
+  -webkit-app-region: no-drag;
+}
+
+.title-btn {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.title-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#btnClose:hover {
+  background: #E74C3C;
+  color: #fff;
+}
+
+/* Mode selector */
+.mode-selector {
+  display: flex;
+  gap: 6px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  padding: 4px;
+  margin-top: 4px;
+}
+
+.mode-btn {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mode-btn.active {
+  background: var(--color-work);
+  color: #fff;
+  font-weight: 600;
+}
+
+.mode-btn[data-mode="shortBreak"].active {
+  background: var(--color-short-break);
+}
+
+.mode-btn[data-mode="longBreak"].active {
+  background: var(--color-long-break);
+}
+
+/* Timer */
+.timer-container {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin: 20px 0;
+}
+
+.timer-ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 8;
+}
+
+.ring-progress {
+  fill: none;
+  stroke: var(--color-work);
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 552.92;
+  stroke-dashoffset: 0;
+  transition: stroke 0.5s ease;
+}
+
+.timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 2px;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.ctrl-btn {
+  padding: 10px 28px;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-start {
+  background: var(--color-work);
+  color: #fff;
+}
+.btn-start:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+.btn-pause {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+}
+.btn-pause:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.btn-reset {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.btn-reset:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 32px;
+  margin-top: auto;
+}
+
+.session-counter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.session-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.session-count {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  padding: 4px 12px;
+  border-radius: 8px;
+}
+
+.always-on-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.always-on-top input {
+  accent-color: var(--color-work);
+}
+
+/* Completed flash animation */
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.flashing .timer-text {
+  animation: flash 0.3s ease-in-out 6;
+}

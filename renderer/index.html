@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>番茄钟</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Title bar -->
+  <div class="title-bar" id="titleBar">
+    <span class="title-text">🍅 番茄钟</span>
+    <div class="title-actions">
+      <button class="title-btn" id="btnMin" title="最小化">&minus;</button>
+      <button class="title-btn" id="btnClose" title="关闭到托盘">&times;</button>
+    </div>
+  </div>
+
+  <!-- Mode selector -->
+  <div class="mode-selector">
+    <button class="mode-btn active" data-mode="work">工作</button>
+    <button class="mode-btn" data-mode="shortBreak">短休</button>
+    <button class="mode-btn" data-mode="longBreak">长休</button>
+  </div>
+
+  <!-- Timer ring -->
+  <div class="timer-container">
+    <svg class="timer-ring" viewBox="0 0 200 200">
+      <circle class="ring-bg" cx="100" cy="100" r="88" />
+      <circle class="ring-progress" id="ringProgress" cx="100" cy="100" r="88" />
+    </svg>
+    <div class="timer-text" id="timerText">25:00</div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button class="ctrl-btn btn-start" id="btnStart">开始</button>
+    <button class="ctrl-btn btn-pause" id="btnPause">暂停</button>
+    <button class="ctrl-btn btn-reset" id="btnReset">重置</button>
+  </div>
+
+  <!-- Session counter -->
+  <div class="footer">
+    <div class="session-counter">
+      <span class="session-label">完成次数</span>
+      <span class="session-count" id="sessionCount">0</span>
+    </div>
+    <label class="always-on-top">
+      <input type="checkbox" id="chkAlwaysOnTop">
+      <span>置顶</span>
+    </label>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
